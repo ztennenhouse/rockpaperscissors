@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function computerPlay() {
+            let compChoice = Math.floor((Math.random() * 3) + 1);
+            if (compChoice === 1) {
+                return "rock";
+            } else if (compChoice === 2) {
+                return "paper";
+            } else {
+                return "scissors";
+            }
+            
+        }
+        function playRound(playerSelection, computerSelection) {
+            var playerSelection = prompt("Please enter Rock, Paper, or Scissors").toLowerCase();
+            var computerSelection = computerPlay(); 
+            if (playerSelection === "rock") {
+                if (computerSelection === "rock") {
+                    return "Computer selected Rock - Tie";
+                } else if (computerSelection === "paper") {
+                    return "Computer selected Paper - You lose";
+                } else {
+                    return "Computer selected Scissors - You win!";
+                }
+            } else if (playerSelection === "paper") {
+                if (computerSelection === "rock") {
+                    return "Computer selected Rock - You win!";
+                } else if (computerSelection === "paper") {
+                    return "Computer selected Paper - Tie";
+                } else {
+                    return "Computer selected Scissors - You lose";
+                }
+            } else if (playerSelection === "scissors") {
+                if (computerSelection === "rock") {
+                    return "Computer selected Rock - You lose!";
+                } else if (computerSelection === "paper") {
+                    return "Computer selected Paper - You win!";
+                } else {
+                    return "Computer selected Scissors - Tie";
+                }
+            }
+        }
+        let computerScore = 0;
+        let playerScore = 0;
+        function game() {
+            var results = "";
+            for (let i = 0; i < 5; i++) {
+                results = results + "\n" + playRound();
+                if (results.slice(-4) === "lose") {
+                    computerScore++;
+                } else if(results.slice(-4) === "win!") {
+                    playerScore++;
+                }
+            }
+            console.log(results + "\n" + playerScore + "-" + computerScore);
+        }
+    </script>
+</body>
+</html>
